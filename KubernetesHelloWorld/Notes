@@ -1,0 +1,5 @@
+1) Build a simple Daemon which does what you need. RogerHelloWorld 
+2) Build Docker image into Daemon. 
+3) Put daemon into local repository
+4) Use kubectl to build pod.  
+5) 
