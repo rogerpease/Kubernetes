@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: hellowfilesyspod
+spec:
+  containers:
+  - image: rogerpease/hellow_filesys_image:0.1.1
+    name: hellow-filesys
+    resources: {}
+    volumeMounts:
+    - mountPath: /data
+      name: minikube-pv-storage 
+  volumes: 
+  - name: minikube-pv-storage 
+    persistentVolumeClaim:
+       claimName: minikube-pvc
+

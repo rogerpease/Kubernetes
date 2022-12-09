@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hellowfilesys
+  name: hellowfilesys
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hellowfilesys
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hellowfilesys
+    spec:
+      containers:
+      - image: rogerpease/hellow_filesys_image:0.1.3
+        name: hellow-filesys
+        resources: {}
+        volumeMounts:
+        - mountPath: /data
+          name: minikube-pv-storage 
+      volumes: 
+      - name: minikube-pv-storage 
+        persistentVolumeClaim:
+           claimName: minikube-pvc
+

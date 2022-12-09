@@ -1,0 +1,22 @@
+#
+# NOTE: I tried other paths in minikube and had trouble with files actually persisting or being 0 size. 
+# I think what was going on was that minikube is running in a docker image, so it was mounting ITS localhost 
+# volume rather than my VM's volume. Also the number of directories minikube supports is small to begin with.   
+# (See docs after google search "persistent volume minikube") 
+#
+#
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minikube-pv
+  labels: 
+    type: local 
+spec:
+  storageClassName: manual 
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadOnlyMany
+  hostPath: 
+    path: /var/lib/minikube
